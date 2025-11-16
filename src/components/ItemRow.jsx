@@ -6,27 +6,35 @@ export default function ItemRow({ item, onToggle, onRemove, onEdit }){
   const [qty, setQty] = useState(item.qty);
 
   const save = () => {
-    onEdit(item.id, { name: name.trim() || item.name, qty: Number(qty)||1 });
+    const patch = {
+      name: name.trim() || item.name,
+      qty: Number(qty) || 1
+    };
+    onEdit(item.id, patch);
     setEditing(false);
   };
 
   return (
-    <div className={"item" + (item.done ? " done" : "")}>
-      <input type="checkbox" checked={item.done} onChange={()=>onToggle(item.id)} />
+    <div className={"item-row" + (item.done ? " done" : "")}>
+      <input
+        type="checkbox"
+        checked={item.done}
+        onChange={() => onToggle(item.id)}
+      />
+
       {editing ? (
-        <div className="row">
-          <input value={name} onChange={e=>setName(e.target.value)} />
-          <span className="kbd">id:{item.id.slice(0,4)}</span>
-        </div>
+        <input value={name} onChange={e=>setName(e.target.value)} />
       ) : (
-        <div className="row">
-          <strong>{item.name}</strong>
-          <span className="badge">id:{item.id.slice(0,4)}</span>
-        </div>
+        <strong>{item.name}</strong>
       )}
 
       {editing ? (
-        <input type="number" min="1" value={qty} onChange={e=>setQty(e.target.value)} />
+        <input
+          type="number"
+          min="1"
+          value={qty}
+          onChange={e=>setQty(e.target.value)}
+        />
       ) : (
         <span className="badge">Množství: {item.qty}</span>
       )}
@@ -35,12 +43,12 @@ export default function ItemRow({ item, onToggle, onRemove, onEdit }){
         {editing ? (
           <>
             <button className="success" onClick={save}>Uložit</button>
-            <button onClick={()=>setEditing(false)}>Zrušit</button>
+            <button onClick={() => {setEditing(false); setName(item.name); setQty(item.qty);}}>Zrušit</button>
           </>
         ) : (
           <>
-            <button className="primary" onClick={()=>setEditing(true)}>Upravit</button>
-            <button className="danger" onClick={()=>onRemove(item.id)}>Smazat</button>
+            <button className="primary" onClick={() => setEditing(true)}>Upravit</button>
+            <button className="danger" onClick={() => onRemove(item.id)}>Smazat</button>
           </>
         )}
       </div>

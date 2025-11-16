@@ -4,18 +4,10 @@ export default function MemberList({ members }){
   return (
     <div className="members">
       {members.map(m => (
-        <div className="member" key={m.id}>
+        <div key={m} className="member">
           <div>
-            <strong>{m.name}</strong>{" "}
-            <span className="badge">({m.role})</span>
-          </div>
-          <div className="row">
-            <button className="primary" onClick={()=>alert("")}>
-              Role
-            </button>
-            <button className="danger" onClick={()=>alert("")}>
-              Odebrat
-            </button>
+            <strong>{m}</strong>{" "}
+            <span className="badge">(člen)</span>
           </div>
         </div>
       ))}
