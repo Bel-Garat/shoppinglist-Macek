@@ -1,32 +1,41 @@
 export const INITIAL_LISTS = [
   {
-    id: "list-1",
-    name: "Sobota nákup",
-    owner: "Karel",
-    members: ["Karel", "Jan", "Marek"],
+    id: 1,
+    name: "Pátek nákup",
+    ownerId: 1,
+    members: [
+      { id: 1, name: "Karel" },
+      { id: 2, name: "Jan" },
+      { id: 3, name: "Marek" }
+    ],
     items: [
-      { id: "i1", name: "Mléko", qty: 2, done: false, ts: Date.now() - 60000 },
-      { id: "i2", name: "Chléb", qty: 1, done: true, ts: Date.now() - 50000 },
-      { id: "i3", name: "Jablka", qty: 6, done: false, ts: Date.now() - 40000 }
+      { id: 1, name: "Jablka", quantity: 3, done: false },
+      { id: 2, name: "Chléb", quantity: 1, done: true },
+      { id: 3, name: "Mléko", quantity: 2, done: false }
     ]
   },
   {
-    id: "list-2",
-    name: "Víkendový nákup",
-    owner: "Eva",
-    members: ["Eva", "Petr"],
+    id: 2,
+    name: "Vánoční nákup",
+    ownerId: 4,
+    members: [
+      { id: 4, name: "Lucie" },
+      { id: 5, name: "Petr" }
+    ],
     items: [
-      { id: "i4", name: "Pivo", qty: 6, done: false, ts: Date.now() - 30000 },
-      { id: "i5", name: "Brambůrky", qty: 3, done: false, ts: Date.now() - 20000 }
+      { id: 4, name: "Cukr", quantity: 2, done: false },
+      { id: 5, name: "Máslo", quantity: 1, done: false },
+      { id: 6, name: "Mouka", quantity: 5, done: true },
+      { id: 7, name: "Rum", quantity: 1, done: false }
     ]
   },
   {
-    id: "list-3",
-    name: "Party nákup",
-    owner: "Lucie",
-    members: ["Lucie"],
-    items: [
-      { id: "i6", name: "Cola", qty: 4, done: false, ts: Date.now() - 10000 }
-    ]
+    id: 3,
+    name: "Oslava",
+    ownerId: 6,
+    members: [
+      { id: 6, name: "Ondřej" }
+    ],
+    items: []
   }
 ];

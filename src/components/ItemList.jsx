@@ -1,21 +1,23 @@
 import React from "react";
 import ItemRow from "./ItemRow";
 
-export default function ItemList({ items, onToggle, onRemove, onEdit }){
-  if(items.length === 0){
-    return <div className="app-subtitle">Žádné položky. Přidejte první položku pomocí formuláře výše.</div>;
+function ItemList({ items, onToggleItem, onRemoveItem }) {
+  if (items.length === 0) {
+    return <div className="empty">Žádné položky.</div>;
   }
+
   return (
     <div className="item-list">
-      {items.map(it => (
+      {items.map((item) => (
         <ItemRow
-          key={it.id}
-          item={it}
-          onToggle={onToggle}
-          onRemove={onRemove}
-          onEdit={onEdit}
+          key={item.id}
+          item={item}
+          onToggleItem={onToggleItem}
+          onRemoveItem={onRemoveItem}
         />
       ))}
     </div>
   );
 }
+
+export default ItemList;
