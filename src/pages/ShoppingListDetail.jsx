@@ -15,8 +15,8 @@ export default function ShoppingListDetail({ lists, onUpdateList, onDeleteList }
 
   const [title, setTitle] = useState(list.name);
   const [items, setItems] = useState(list.items);
-  const [filter, setFilter] = useState("all"); // all | open | done
-  const [sort, setSort] = useState("recent"); // recent | alpha
+  const [filter, setFilter] = useState("all"); 
+  const [sort, setSort] = useState("recent"); 
 
   const filtered = useMemo(() => {
     let arr = [...items];

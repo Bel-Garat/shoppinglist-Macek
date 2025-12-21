@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useI18n } from "../i18n/I18nContext";
 
 function AddItemForm({ onAddItem }) {
+  const { t } = useI18n();
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
 
@@ -17,7 +19,7 @@ function AddItemForm({ onAddItem }) {
       <input
         className="text-input"
         type="text"
-        placeholder="Název položky"
+        placeholder={t("itemNamePlaceholder")}
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
@@ -29,7 +31,7 @@ function AddItemForm({ onAddItem }) {
         onChange={(e) => setQuantity(Number(e.target.value))}
       />
       <button type="submit" className="primary">
-        + Přidat
+        {t("add")}
       </button>
     </form>
   );

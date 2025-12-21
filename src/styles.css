@@ -1,3 +1,39 @@
+:root[data-theme="dark"] {
+  --bg: #050b18;
+  --bg-accent: #182642;
+  --text: #f5f7ff;
+  --muted: #a7b3d9;
+  --panel: #0c1424;
+  --panel-2: #101935;
+  --border: #273555;
+  --btn: #202a46;
+  --btn-text: #f5f7ff;
+  --btn-primary: #22c55e;
+  --btn-primary-text: #031118;
+  --btn-danger: #f97373;
+  --btn-danger-text: #19030a;
+  --progress-bg: rgba(255,255,255,0.10);
+  --progress-fill: rgba(34,197,94,0.9);
+}
+
+:root[data-theme="light"] {
+  --bg: #f6f7fb;
+  --bg-accent: #e8eefb;
+  --text: #0b1220;
+  --muted: #475569;
+  --panel: #ffffff;
+  --panel-2: #f1f5ff;
+  --border: #c7d2fe;
+  --btn: #e2e8f0;
+  --btn-text: #0b1220;
+  --btn-primary: #22c55e;
+  --btn-primary-text: #031118;
+  --btn-danger: #f97373;
+  --btn-danger-text: #19030a;
+  --progress-bg: rgba(2,6,23,0.12);
+  --progress-fill: rgba(34,197,94,0.9);
+}
+
 *,
 *::before,
 *::after {
@@ -7,20 +43,21 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #050b18;
-  color: #f5f7ff;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .page {
   min-height: 100vh;
   padding: 32px 40px 48px;
-  background: radial-gradient(circle at top left, #182642, #050b18 55%);
+  background: radial-gradient(circle at top left, var(--bg-accent), var(--bg) 55%);
 }
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 14px;
   margin-bottom: 24px;
 }
 
@@ -31,34 +68,37 @@ body {
 
 .subtitle {
   margin-top: 4px;
-  color: #a7b3d9;
+  color: var(--muted);
   font-size: 14px;
 }
 
 .header-actions {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 button {
   border-radius: 999px;
   padding: 8px 16px;
   border: none;
-  background: #202a46;
-  color: #f5f7ff;
+  background: var(--btn);
+  color: var(--btn-text);
   cursor: pointer;
   font-size: 14px;
 }
 
 button.primary {
-  background: #22c55e;
-  color: #031118;
+  background: var(--btn-primary);
+  color: var(--btn-primary-text);
   font-weight: 600;
 }
 
 button.danger {
-  background: #f97373;
-  color: #19030a;
+  background: var(--btn-danger);
+  color: var(--btn-danger-text);
 }
 
 button:disabled {
@@ -73,10 +113,10 @@ button:disabled {
 }
 
 .list-card {
-  background: #0c1424;
+  background: var(--panel);
   border-radius: 18px;
   padding: 18px 20px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
 }
 
 .list-card h2 {
@@ -88,8 +128,33 @@ button:disabled {
   flex-wrap: wrap;
   gap: 8px 16px;
   font-size: 13px;
-  color: #9ca3c7;
-  margin-bottom: 16px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.mini-stats {
+  margin: 6px 0 16px;
+}
+
+.mini-stats-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.progress {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--progress-bg);
+  overflow: hidden;
+}
+
+.progress__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--progress-fill);
 }
 
 .list-card-actions {
@@ -99,10 +164,10 @@ button:disabled {
 }
 
 .panel {
-  background: #0c1424;
+  background: var(--panel);
   border-radius: 18px;
   padding: 18px 20px 20px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
   margin-bottom: 24px;
 }
 
@@ -110,20 +175,41 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   margin-bottom: 12px;
 }
 
 .filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
 select {
-  background: #101935;
-  color: #f5f7ff;
+  background: var(--panel-2);
+  color: var(--text);
   border-radius: 999px;
-  border: 1px solid #273555;
+  border: 1px solid var(--border);
   padding: 6px 10px;
+}
+
+.top-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-label {
+  font-size: 13px;
+  color: var(--muted);
 }
 
 .add-item-form,
@@ -136,16 +222,16 @@ select {
 .text-input,
 .number-input {
   border-radius: 999px;
-  border: 1px solid #273555;
-  background: #050b18;
-  color: #f5f7ff;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
   padding: 8px 14px;
   font-size: 14px;
 }
 
 .text-input::placeholder,
 .number-input::placeholder {
-  color: #6e7aa4;
+  color: var(--muted);
 }
 
 .text-input {
@@ -153,7 +239,7 @@ select {
 }
 
 .number-input {
-  width: 80px;
+  width: 90px;
 }
 
 .item-list {
@@ -166,7 +252,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #101935;
+  background: var(--panel-2);
   border-radius: 12px;
   padding: 8px 10px;
 }
@@ -190,7 +276,7 @@ select {
   margin-right: auto;
   margin-left: 16px;
   font-size: 13px;
-  color: #9ca3c7;
+  color: var(--muted);
 }
 
 .member-section {
@@ -209,7 +295,7 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #101935;
+  background: var(--panel-2);
   border-radius: 12px;
   padding: 8px 10px;
 }
@@ -231,13 +317,13 @@ select {
 }
 
 .tag-owner {
-  background: #22c55e33;
-  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.20);
+  color: var(--text);
 }
 
 .empty {
   padding: 10px 0;
-  color: #9ca3c7;
+  color: var(--muted);
   font-size: 14px;
 }
 
@@ -246,10 +332,16 @@ select {
   border-radius: 12px;
   padding: 12px 16px;
   margin-bottom: 16px;
+  color: #fff;
 }
 
 .loading {
-  color: #9ca3c7;
+  color: var(--muted);
+}
+
+.chartWrap {
+  width: 100%;
+  height: 260px;
 }
 
 @media (max-width: 720px) {
@@ -260,6 +352,22 @@ select {
   .page-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+  }
+
+  .header-actions {
+    justify-content: flex-start;
+  }
+
+  .list-card-actions {
+    flex-direction: column;
+  }
+
+  .add-item-form,
+  .add-member-form {
+    flex-direction: column;
+  }
+
+  .number-input {
+    width: 100%;
   }
 }
